@@ -1,22 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Web App</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Menú de Asignaturas</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="styles_general.css">
 </head>
-<body>
-    <div class="quiz-container" id="quiz">
-        <div id="question" class="question"></div>
-        <div class="options-container">
-            <button class="option" id="a"></button>
-            <button class="option" id="b"></button>
-            <button class="option" id="c"></button>
-            <button class="option" id="d"></button>
+<body class="bg-warning">
+    <div class="container text-center my-5">
+        <h1 class="mb-4 text-white">Menú de Asignaturas</h1>
+        <div class="row justify-content-center">
+            <!-- Diseño de Interfaces -->
+            <div class="col-md-6 mb-4">
+                <div class="card card-diseño">
+                    <div class="card-body">
+                        <h2 class="card-title">Diseño de Interfaces</h2>
+                        <!-- Redirige a quiz.html con parámetros subject=dwi&trimestre=1 -->
+                        <a href="quiz.html?subject=dwi&trimestre=1" class="btn btn-pastel-green m-2">1º Trimestre</a>
+                        <!-- Redirige a quiz.html con parámetros subject=dwi&trimestre=2 -->
+                        <a href="quiz.html?subject=dwi&trimestre=2" class="btn btn-pastel-green m-2">2º Trimestre</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Servidor -->
+            <div class="col-md-6 mb-4">
+                <div class="card card-servidor">
+                    <div class="card-body">
+                        <h2 class="card-title">Servidor</h2>
+                        <!-- Redirige a quiz.html con parámetros subject=servidor&trimestre=1 -->
+                        <a href="quiz.html?subject=servidor&trimestre=1" class="btn btn-pastel-blue m-2">1º Trimestre</a>
+                        <!-- Redirige a quiz.html con parámetros subject=servidor&trimestre=2 -->
+                        <a href="quiz.html?subject=servidor&trimestre=2" class="btn btn-pastel-blue m-2">2º Trimestre</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cliente -->
+            <div class="col-md-6 mb-4">
+                <div class="card card-cliente">
+                    <div class="card-body">
+                        <h2 class="card-title">Cliente</h2>
+                        <!-- Redirige a quiz.html con parámetros subject=cliente&trimestre=1 -->
+                        <a href="quiz.html?subject=cliente&trimestre=1" class="btn btn-pastel-red m-2">1º Trimestre</a>
+                        <!-- Redirige a quiz.html con parámetros subject=cliente&trimestre=2 -->
+                        <a href="quiz.html?subject=cliente&trimestre=2" class="btn btn-pastel-red m-2">2º Trimestre</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Más asignaturas... -->
+            <div class="col-md-6 mb-4">
+                <div class="card card-empresa">
+                    <div class="card-body">
+                        <h2 class="card-title">Empresa e Iniciativa Emprendedora</h2>
+                        <a href="quiz.html?subject=empresa&trimestre=1" class="btn btn-pastel-yellow m-2">1º Trimestre</a>
+                        <a href="quiz.html?subject=empresa&trimestre=2" class="btn btn-pastel-yellow m-2">2º Trimestre</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card card-despliegue">
+                    <div class="card-body">
+                        <h2 class="card-title">Despliegue</h2>
+                        <a href="quiz.html?subject=despliegue&trimestre=1" class="btn btn-pastel-purple m-2">1º Trimestre</a>
+                        <a href="quiz.html?subject=despliegue&trimestre=2" class="btn btn-pastel-purple m-2">2º Trimestre</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card card-ingles">
+                    <div class="card-body">
+                        <h2 class="card-title">Inglés</h2>
+                        <a href="quiz.html?subject=ingles&trimestre=1" class="btn btn-pastel-gray m-2">1º Trimestre</a>
+                        <a href="quiz.html?subject=ingles&trimestre=2" class="btn btn-pastel-gray m-2">2º Trimestre</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div id="result" class="result-container"></div>
-    <script src="script.js"></script>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

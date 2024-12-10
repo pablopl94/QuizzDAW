@@ -1,0 +1,98 @@
+/* Botones en tonos pastel */
+.btn-pastel-green {
+    background-color: #a8d5ba;
+    color: #333;
+}
+
+.btn-pastel-green:hover {
+    background-color: #8ccfa4;
+    color: #000;
+}
+
+.btn-pastel-blue {
+    background-color: #b5dffb;
+    color: #333;
+}
+
+.btn-pastel-blue:hover {
+    background-color: #99d4f7;
+    color: #000;
+}
+
+.btn-pastel-red {
+    background-color: #fbc4c4;
+    color: #333;
+}
+
+.btn-pastel-red:hover {
+    background-color: #f8aaaa;
+    color: #000;
+}
+
+.btn-pastel-yellow {
+    background-color: #fbe7c4;
+    color: #333;
+}
+
+.btn-pastel-yellow:hover {
+    background-color: #f8d8a3;
+    color: #000;
+}
+
+.btn-pastel-purple {
+    background-color: #d6c9f7;
+    color: #333;
+}
+
+.btn-pastel-purple:hover {
+    background-color: #c1acf2;
+    color: #000;
+}
+
+.btn-pastel-gray {
+    background-color: #d9d9d9;
+    color: #333;
+}
+
+.btn-pastel-gray:hover {
+    background-color: #cfcfcf;
+    color: #000;
+}
+
+/* Colores pastel para las tarjetas */
+.card-diseño {
+    background-color: #e8f5e9; /* Verde pastel */
+    color: #1b5e20;
+}
+
+.card-servidor {
+    background-color: #e3f2fd; /* Azul pastel */
+    color: #0d47a1;
+}
+
+.card-cliente {
+    background-color: #ffebee; /* Rojo pastel */
+    color: #b71c1c;
+}
+
+.card-empresa {
+    background-color: #fff8e1; /* Amarillo pastel */
+    color: #f57f17;
+}
+
+.card-despliegue {
+    background-color: #f3e5f5; /* Morado pastel */
+    color: #4a148c;
+}
+
+.card-ingles {
+    background-color: #f5f5f5; /* Gris claro */
+    color: #424242;
+}
+
+/* Efecto hover para destacar */
+.card:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}

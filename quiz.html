@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Estilos específicos para el quiz -->
+    <link rel="stylesheet" href="styles_quizz.css">
+</head>
+<body>
+    <div class="container text-center my-5">
+      
+
+        <div id="quiz-container">
+            <div id="question"> <strong>Pregunta irá aquí</strong></div>
+            <div class="options-container">
+                <button id="a" class="option">Opción A</button>
+                <button id="b" class="option">Opción B</button>
+                <button id="c" class="option">Opción C</button>
+                <button id="d" class="option">Opción D</button>
+            </div>
+        </div>
+        
+        <div id="result" style="display: none;">
+            <p>Respuestas correctas: <span id="correct-answers"></span></p>
+            <button onclick="goToMenu()" class="btn btn-primary">Volver al Menú</button>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Función para obtener parámetros de la URL
+        function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                subject: params.get('subject'),
+                trimestre: params.get('trimestre')
+            };
+        }
+
+        // Cargar el script del quiz dependiendo del parámetro en la URL
+        function loadQuizScript(subject, trimestre) {
+            const script = document.createElement('script');
+            script.src = `JS/${subject}_${trimestre}.js`; // Asegúrate de que la ruta y el nombre del script sean correctos
+            script.onload = () => {
+                console.log(`Script ${subject}_${trimestre}.js cargado correctamente.`);
+                loadQuiz();
+            };
+            script.onerror = () => {
+                alert('Error al cargar el script del quiz.');
+                console.error(`No se pudo cargar el script ${subject}_${trimestre}.js`);
+            };
+            document.body.appendChild(script);
+        }
+
+        // Función para inicializar el quiz
+        function loadQuiz() {
+            const params = getQueryParams();
+            const subjectTitle = document.getElementById('subject-title');
+            subjectTitle.textContent = `Quiz de ${params.subject.charAt(0).toUpperCase() + params.subject.slice(1)} - Trimestre ${params.trimestre}`;
+
+            // Aquí puedes agregar la lógica para mostrar las preguntas y opciones
+        }
+
+        // Redirige al menú principal
+        function goToMenu() {
+            window.location.href = "index.html";
+        }
+
+        // Cuando la página cargue, obtener el parámetro de la URL y cargar el script correspondiente
+        window.onload = () => {
+            const { subject, trimestre } = getQueryParams();
+            if (subject && trimestre) {
+                loadQuizScript(subject, trimestre);
+            } else {
+                alert("Parámetros incorrectos.");
+                console.error("Faltan los parámetros 'subject' o 'trimestre' en la URL.");
+            }
+        };
+    </script>
+</body>
+</html>
