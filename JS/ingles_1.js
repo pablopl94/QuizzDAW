@@ -123,6 +123,7 @@ const quizData = [
 
 let currentQuestionIndex = 0;
 let score = 0;
+let incorrect = 0;
 
 const questionEl = document.getElementById("question");
 const options = document.querySelectorAll(".option");
@@ -138,6 +139,7 @@ function loadQuiz() {
     options[0].innerText = currentQuizData.a;
     options[1].innerText = currentQuizData.b;
     options[2].innerText = currentQuizData.c;
+	options[3].innerText = currentQuizData.d;
 }
 
 function deselectOptions() {

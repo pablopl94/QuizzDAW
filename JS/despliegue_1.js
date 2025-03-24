@@ -4,6 +4,7 @@ const quizData = [
         a: "priority.conf",
         b: "dir.conf",
         c: "pages.conf",
+        d: "load.conf",
         correct: "a",
     },
     {
@@ -11,6 +12,7 @@ const quizData = [
         a: "DocumentRoot",
         b: "ServerName",
         c: "ServerAdmin",
+        d: "AdminContact",
         correct: "c",
     },
     {
@@ -18,6 +20,7 @@ const quizData = [
         a: "a2enmod",
         b: "a2ensite",
         c: "a2dismod",
+        d: "a2addmod",
         correct: "a",
     },
     {
@@ -25,6 +28,7 @@ const quizData = [
         a: "Modelo Cliente-Cliente",
         b: "Modelo P2P, Peer to Peer",
         c: "Modelo Cliente-Servidor",
+        d: "Modelo de red jerárquica",
         correct: "b",
     },
     {
@@ -32,6 +36,7 @@ const quizData = [
         a: "Recuperar datos del servidor",
         b: "Aceptar conexiones con el cliente",
         c: "Enviará respuesta al usuario",
+        d: "Asegurar la conexión con la base de datos",
         correct: "b",
     },
     {
@@ -39,6 +44,7 @@ const quizData = [
         a: "YouTube",
         b: "Spotify",
         c: "PeerTube",
+        d: "Vimeo",
         correct: "c",
     },
     {
@@ -46,6 +52,7 @@ const quizData = [
         a: "Apache Web Server",
         b: "Nginx",
         c: "Internet Information Server",
+        d: "LiteSpeed",
         correct: "c",
     },
     {
@@ -53,6 +60,7 @@ const quizData = [
         a: "Apache Tomcat",
         b: "thttpd",
         c: "Apache",
+        d: "Node.js",
         correct: "a",
     },
     {
@@ -60,6 +68,7 @@ const quizData = [
         a: "401",
         b: "402",
         c: "400",
+        d: "403",
         correct: "c",
     },
     {
@@ -67,6 +76,7 @@ const quizData = [
         a: "apache.conf",
         b: "ssl.conf",
         c: "apache2.conf",
+        d: "httpd.conf",
         correct: "c",
     },
     {
@@ -74,6 +84,7 @@ const quizData = [
         a: "a2dismod modulo_apache",
         b: "adismod modulo_apache",
         c: "a2enmod modulo_apache",
+        d: "a2deactivate modulo_apache",
         correct: "a",
     },
     {
@@ -81,6 +92,7 @@ const quizData = [
         a: "/etc/apace2/mods-available",
         b: "/etc/apache2/mods-disponibles",
         c: "/etc/apache2/mods-enabled",
+        d: "/etc/apache2/modules-available",
         correct: "a",
     },
     {
@@ -88,6 +100,7 @@ const quizData = [
         a: "/etc/apache2/sites-available",
         b: "/etc/apache2/sites-enabled",
         c: "/etc/apache2/sites",
+        d: "/etc/apache2/virtual-hosts",
         correct: "a",
     },
     {
@@ -95,6 +108,7 @@ const quizData = [
         a: "TLS es una versión más antigua que SSL",
         b: "TLS y SSL son lo mismo, trabajan al mismo nivel",
         c: "SSL es una versión más antigua que TLS",
+        d: "TLS es más rápido que SSL",
         correct: "c",
     },
     {
@@ -102,6 +116,7 @@ const quizData = [
         a: "SSL 4.0",
         b: "SSL 2.5",
         c: "SSL 3.0",
+        d: "SSL 3.1",
         correct: "c",
     },
     {
@@ -109,6 +124,7 @@ const quizData = [
         a: "Confidencialidad",
         b: "Integridad",
         c: "Autenticación",
+        d: "Autorización",
         correct: "a",
     },
     {
@@ -116,6 +132,7 @@ const quizData = [
         a: "Certificados digitales",
         b: "Criptografía asimétrica",
         c: "No se puede garantizar",
+        d: "Firmas electrónicas",
         correct: "a",
     },
     {
@@ -123,6 +140,7 @@ const quizData = [
         a: "No repudio",
         b: "Repudio",
         c: "Autenticidad",
+        d: "Confianza",
         correct: "a",
     },
     {
@@ -130,6 +148,7 @@ const quizData = [
         a: "Entidad Certificadora",
         b: "Entidad Verificación",
         c: "Entidad Registradora",
+        d: "Autoridad Certificadora",
         correct: "a",
     },
     {
@@ -137,6 +156,7 @@ const quizData = [
         a: "000default.conf",
         b: "000-default.html",
         c: "000-default.conf",
+        d: "000-default-vhost.conf",
         correct: "c",
     }
 ];
