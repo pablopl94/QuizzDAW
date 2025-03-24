@@ -5,7 +5,7 @@ const quizData = [
         b: "2XX",
         c: "1XX",
         d: "4XX",
-        correct: "c"
+        correct: "c",
     },
     {
         question: "El puerto por defecto de conexión en un servicio ftp…",
@@ -13,7 +13,7 @@ const quizData = [
         b: "Es el 21",
         c: "Es el 22",
         d: "Es el 23",
-        correct: "b"
+        correct: "b",
     },
     {
         question: "En una transferencia FTP, ¿cuál es la orden que le envía el cliente para establecer una comunicación en modo activo?",
@@ -21,7 +21,7 @@ const quizData = [
         b: "PASV",
         c: "ACT",
         d: "LIST",
-        correct: "a"
+        correct: "a",
     },
     {
         question: "En un servidor FTP, es necesario que el cliente y el servidor…",
@@ -29,7 +29,7 @@ const quizData = [
         b: "Es independiente de la plataforma, es un servicio que va por TCP",
         c: "Tengan la misma plataforma, Linux-Linux, Windows-Windows, …",
         d: "Deban estar en la misma red local",
-        correct: "b"
+        correct: "b",
     },
     {
         question: "¿Hace cuántos años de publicó el primer concepto de FTP, protocolo de transferencia de archivos?",
@@ -37,7 +37,7 @@ const quizData = [
         b: "más de 50 años",
         c: "entre 21 y 45 años",
         d: "menos de 10 años",
-        correct: "b"
+        correct: "b",
     },
     {
         question: "¿Cuál de los siguientes programas es un servidor FTP?",
@@ -53,7 +53,7 @@ const quizData = [
         b: "8080",
         c: "8082",
         d: "443",
-        correct: "b"
+        correct: "b",
     },
     {
         question: "¿Cuál de los siguientes servidores de aplicaciones web utilizan también Java?",
@@ -61,7 +61,7 @@ const quizData = [
         b: "GlassFish y WildFly",
         c: "WildFly",
         d: "Apache Tomcat",
-        correct: "b"
+        correct: "b",
     },
     {
         question: "¿Cuál es la extensión de un archivo ejecutable de Java?",
@@ -69,7 +69,7 @@ const quizData = [
         b: ".deb",
         c: ".jar",
         d: ".class",
-        correct: "c"
+        correct: "c",
     },
     {
         question: "¿Cuál es el código de respuesta de un servidor web, si no se tiene acceso a esa página solicitada?",
@@ -77,7 +77,7 @@ const quizData = [
         b: "200",
         c: "301",
         d: "404",
-        correct: "a"
+        correct: "a",
     },
     {
         question: "¿Cuál es el apartado de Apache Tomcat para gestionar las aplicaciones publicadas?",
@@ -85,7 +85,7 @@ const quizData = [
         b: "Host Manager",
         c: "Server Status",
         d: "Admin Console",
-        correct: "a"
+        correct: "a",
     },
     {
         question: "¿Qué significan las siglas JDK en el mundo de Java?",
@@ -93,7 +93,7 @@ const quizData = [
         b: "Java Documentation Kit",
         c: "Java Development Kit",
         d: "Java Deployment Kit",
-        correct: "c"
+        correct: "c",
     },
     {
         question: "El sistema nombres DNS tiene un sistema tipo...",
@@ -101,7 +101,7 @@ const quizData = [
         b: "árbol",
         c: "grafo",
         d: "tabla",
-        correct: "b"
+        correct: "b",
     },
     {
         question: "En un servidor de DNS el registro A, asocia a un dominio...",
@@ -109,7 +109,7 @@ const quizData = [
         b: "la dirección IPV4",
         c: "la dirección IPV6",
         d: "un nombre de dominio",
-        correct: "b"
+        correct: "b",
     },
     {
         question: "En un servidor de DNS el registro MX, asocia a un dominio...",
@@ -117,7 +117,7 @@ const quizData = [
         b: "la dirección ip asociada al servidor de correo",
         c: "la dirección ip asociada al servidor web",
         d: "la dirección ip asociada al servidor DNS",
-        correct: "b"
+        correct: "b",
     },
     {
         question: "En un servidor de DNS el registro CNAME...",
@@ -125,7 +125,7 @@ const quizData = [
         b: "Es el nombre canónico, canonical name",
         c: "Se utiliza para asociar alias para nombres de dominio",
         d: "Solo se utiliza para alias de subdominios",
-        correct: "a"
+        correct: "a",
     },
     {
         question: "En un servidor de DNS el registro NS..",
@@ -133,7 +133,7 @@ const quizData = [
         b: "Dice dónde está el servidor de nombres que tiene asociado el dominio",
         c: "No existe ese registro",
         d: "Define los servidores de correo de un dominio",
-        correct: "b"
+        correct: "b",
     },
     {
         question: "En un servidor de DNS el registro PTR",
@@ -141,7 +141,7 @@ const quizData = [
         b: "Las tres respuestas anteriores son correctas",
         c: "Se encarga de traducir los registros de tipo A a dominio",
         d: "Se utiliza para resolver direcciones IPv6",
-        correct: "a"
+        correct: "a",
     },
     {
         question: "¿Qué compañía que proporciona servicio de DNS te protege frente a amenazas y cuida tu privacidad?",
@@ -149,7 +149,7 @@ const quizData = [
         b: "La que te proporciona el ISP",
         c: "Quad9",
         d: "Cloudflare",
-        correct: "c"
+        correct: "c",
     },
     {
         question: "En un servidor de DNS el registro CNAME...",
@@ -157,7 +157,7 @@ const quizData = [
         b: "Las respuestas a y c son correctas",
         c: "Se utiliza para asociar alias para nombres de dominio",
         d: "Se usa para asociar alias a direcciones IP",
-        correct: "b"
+        correct: "b",
     }
 ];
 
@@ -178,6 +178,7 @@ function loadQuiz() {
     options[0].innerText = currentQuizData.a;
     options[1].innerText = currentQuizData.b;
     options[2].innerText = currentQuizData.c;
+	options[3].innerText = currentQuizData.d;
 }
 
 function deselectOptions() {
