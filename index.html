@@ -177,15 +177,8 @@
     <!-- Script para mostrar el modal solo la primera vez -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Comprobar si es la primera visita
-            if (!localStorage.getItem('quizz_daw_visited')) {
-                // Es la primera visita, mostrar el modal
-                var welcomeModal = new bootstrap.Modal(document.getElementById('welcomeModal'), {});
-                welcomeModal.show();
-                
-                // Guardar en localStorage que ya ha visitado la página
-                localStorage.setItem('quizz_daw_visited', 'true');
-            }
+            var welcomeModal = new bootstrap.Modal(document.getElementById('welcomeModal'));
+            welcomeModal.show();
         });
     </script>
 </body>
