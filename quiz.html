@@ -3,29 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz</title>
+    <title>QUIZZ DAW - Test</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts - Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Estilos específicos para el quiz -->
     <link rel="stylesheet" href="styles_quizz.css">
+    <!-- Estilos generales (para el footer) -->
+    <link rel="stylesheet" href="styles_general.css">
 </head>
 <body>
-    <div class="container text-center my-5">
-      
+    <div class="container">
+        <div class="quiz-header">
+            <h1 id="subject-title">Cargando quiz...</h1>
+            <p id="quiz-description"></p>
+        </div>
 
         <div id="quiz-container">
-            <div id="question"> <strong>Pregunta irá aquí</strong></div>
+            <!-- Question counter -->
+            <div class="question-counter" id="question-counter">Pregunta 1 de 20</div>
+            
+            <div id="question"><strong>Pregunta irá aquí</strong></div>
+            
             <div class="options-container">
-                <button id="a" class="option">Opción A</button>
-                <button id="b" class="option">Opción B</button>
-                <button id="c" class="option">Opción C</button>
-                <button id="d" class="option">Opción D</button>
+                <button id="a" class="option">
+                    <span class="option-letter">A</span> <span class="option-text">Opción A</span>
+                </button>
+                <button id="b" class="option">
+                    <span class="option-letter">B</span> <span class="option-text">Opción B</span>
+                </button>
+                <button id="c" class="option">
+                    <span class="option-letter">C</span> <span class="option-text">Opción C</span>
+                </button>
+                <button id="d" class="option">
+                    <span class="option-letter">D</span> <span class="option-text">Opción D</span>
+                </button>
             </div>
         </div>
         
         <div id="result" style="display: none;">
             <p>Respuestas correctas: <span id="correct-answers"></span></p>
-            <button onclick="goToMenu()" class="btn btn-primary">Volver al Menú</button>
+            <button onclick="goToMenu()" class="btn-return">
+                <i class="fas fa-home me-2"></i>Volver al Menú
+            </button>
+        </div>
+        
+        <!-- Footer actualizado como en la imagen -->
+        <div class="quiz-footer">
+            <p class="footer-text">¿Te gusta esta aplicación? ¡Me ayudaría mucho si dejas una estrella en mi repositorio!</p>
+            <a href="https://github.com/pablopl94/QuizzDAW" target="_blank" class="github-button">
+                <i class="fab fa-github"></i> Ver en GitHub <i class="fas fa-star"></i>
+            </a>
         </div>
     </div>
 
@@ -42,13 +73,40 @@
             };
         }
 
+        // Variable global para rastrear los clics en opciones y actualizar el contador
+        let globalCurrentQuestionIndex = 0;
+        let totalQuestions = 20; // Valor predeterminado
+
         // Cargar el script del quiz dependiendo del parámetro en la URL
         function loadQuizScript(subject, trimestre) {
             const script = document.createElement('script');
             script.src = `JS/${subject}_${trimestre}.js`; // Asegúrate de que la ruta y el nombre del script sean correctos
             script.onload = () => {
                 console.log(`Script ${subject}_${trimestre}.js cargado correctamente.`);
+                
+                // Determinar el número total de preguntas según el script cargado
+                if (typeof quizData !== 'undefined') {
+                    totalQuestions = quizData.length;
+                } else if (typeof empresaTest2 !== 'undefined' && empresaTest2.preguntas) {
+                    totalQuestions = empresaTest2.preguntas.length;
+                } else if (typeof shuffledQuizData !== 'undefined') {
+                    totalQuestions = shuffledQuizData.length;
+                }
+                
+                // Configurar el monitoreo de clics para el contador
+                setupQuestionCounter();
+                
+                // Inicializar el contador con la primera pregunta
+                updateQuestionCounter(1, totalQuestions);
+                
+                // Cargar el quiz normalmente
                 loadQuiz();
+                
+                // Add subject-specific class to body for styling
+                document.body.classList.add(`subject-${subject}`);
+                
+                // Update the quiz description based on subject
+                updateQuizDescription(subject, trimestre);
             };
             script.onerror = () => {
                 alert('Error al cargar el script del quiz.');
@@ -57,13 +115,91 @@
             document.body.appendChild(script);
         }
 
+        // Update quiz description based on subject
+        function updateQuizDescription(subject, trimestre) {
+            const descEl = document.getElementById('quiz-description');
+            let description = 'Selecciona la respuesta correcta para cada pregunta.';
+            
+            // You can customize descriptions for each subject/trimester
+            switch(subject) {
+                case 'dwi':
+                    description = 'Test de Diseño de Interfaces Web - ' + 
+                        (trimestre <= 2 ? `${trimestre}º Trimestre` : `Repaso ${trimestre-2}/2`);
+                    break;
+                case 'servidor':
+                    description = 'Test de Programación en Entorno Servidor - ' + 
+                        `${trimestre}º Trimestre`;
+                    break;
+                case 'cliente':
+                    description = 'Test de Programación en Entorno Cliente - ' + 
+                        `${trimestre}º Trimestre`;
+                    break;
+                case 'empresa':
+                    description = 'Test de Empresa e Iniciativa Emprendedora - ' + 
+                        `${trimestre}º Trimestre`;
+                    break;
+                case 'despliegue':
+                    description = 'Test de Despliegue de Aplicaciones Web - ' + 
+                        `${trimestre}º Trimestre`;
+                    break;
+                case 'ingles':
+                    description = 'Test de Inglés Técnico - ' + 
+                        `${trimestre}º Trimestre`;
+                    break;
+            }
+            
+            descEl.textContent = description;
+        }
+
+        // Update question counter
+        function updateQuestionCounter(currentQuestion, totalQuestions) {
+            const counter = document.getElementById('question-counter');
+            counter.textContent = `Pregunta ${currentQuestion} de ${totalQuestions}`;
+        }
+
+        // Función para configurar el contador de preguntas mediante un monitoreo de clics
+        function setupQuestionCounter() {
+            // Agregamos eventos de clic a todas las opciones
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', function() {
+                    // Esperar un momento para que la animación termine y se cambie de pregunta
+                    setTimeout(() => {
+                        globalCurrentQuestionIndex++;
+                        
+                        // Actualizar el contador si aún hay preguntas
+                        if (globalCurrentQuestionIndex < totalQuestions) {
+                            updateQuestionCounter(globalCurrentQuestionIndex + 1, totalQuestions);
+                        }
+                    }, 1000); // Tiempo aproximado antes de que cambie la pregunta
+                });
+            });
+        }
+
         // Función para inicializar el quiz
         function loadQuiz() {
             const params = getQueryParams();
             const subjectTitle = document.getElementById('subject-title');
-            subjectTitle.textContent = `Quiz de ${params.subject.charAt(0).toUpperCase() + params.subject.slice(1)} - Trimestre ${params.trimestre}`;
+            
+            let subjectName = '';
+            switch(params.subject) {
+                case 'dwi': subjectName = 'Diseño de Interfaces'; break;
+                case 'servidor': subjectName = 'Servidor'; break;
+                case 'cliente': subjectName = 'Cliente'; break;
+                case 'empresa': subjectName = 'Empresa e Iniciativa'; break;
+                case 'despliegue': subjectName = 'Despliegue'; break;
+                case 'ingles': subjectName = 'Inglés'; break;
+                default: subjectName = params.subject;
+            }
+            
+            subjectTitle.textContent = `${subjectName} - ${params.trimestre}º Trimestre`;
 
-            // Aquí puedes agregar la lógica para mostrar las preguntas y opciones
+            // Reemplazar la función loadQuiz original para que no afecte nuestro contador global
+            if (window.loadQuiz) {
+                const originalLoadQuiz = window.loadQuiz;
+                window.loadQuiz = function() {
+                    originalLoadQuiz.apply(this, arguments);
+                };
+            }
         }
 
         // Redirige al menú principal

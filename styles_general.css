@@ -1,98 +1,320 @@
-/* Botones en tonos pastel */
+/* Base styles and variables */
+:root {
+  --transition-standard: all 0.3s ease;
+  --shadow-small: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 8px 15px rgba(0, 0, 0, 0.1);
+  --shadow-large: 0 12px 28px rgba(0, 0, 0, 0.15);
+  --border-radius: 12px;
+  --font-main: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+  font-family: var(--font-main);
+  min-height: 100vh;
+  /* Keeping the original Bootstrap warning background color */
+  /* The bg-warning class is applied in the HTML */
+  padding-bottom: 3rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Modern card design with subtle shadow and border */
+.card {
+  border: none;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-medium);
+  transition: var(--transition-standard);
+  height: 100%;
+}
+
+.card-body {
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-title {
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Effect when hovering over cards */
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-large);
+}
+
+/* Main header styling - ELIMINADA LA BARRA DEBAJO DEL TÍTULO */
+h1.mb-4 {
+  font-weight: 800;
+  font-size: 3rem;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem !important;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+/* Eliminado el pseudo-elemento que creaba la barra */
+/* h1.mb-4:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 2px;
+} */
+
+/* Button styles - keeping the pastel colors but modernizing the design */
+.btn {
+  border-radius: 30px;
+  padding: 0.6rem 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: var(--transition-standard);
+  margin: 0.5rem;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  box-shadow: var(--shadow-small);
+  border: none;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Pastel color buttons with improved contrast */
 .btn-pastel-green {
-    background-color: #a8d5ba;
-    color: #333;
+  background-color: #a8d5ba;
+  color: #2c5b41;
 }
 
 .btn-pastel-green:hover {
-    background-color: #8ccfa4;
-    color: #000;
+  background-color: #8ccfa4;
+  color: #224631;
 }
 
 .btn-pastel-blue {
-    background-color: #b5dffb;
-    color: #333;
+  background-color: #b5dffb;
+  color: #2a5d7c;
 }
 
 .btn-pastel-blue:hover {
-    background-color: #99d4f7;
-    color: #000;
+  background-color: #99d4f7;
+  color: #1f4a68;
 }
 
 .btn-pastel-red {
-    background-color: #fbc4c4;
-    color: #333;
+  background-color: #fbc4c4;
+  color: #903636;
 }
 
 .btn-pastel-red:hover {
-    background-color: #f8aaaa;
-    color: #000;
+  background-color: #f8aaaa;
+  color: #7a2121;
 }
 
 .btn-pastel-yellow {
-    background-color: #fbe7c4;
-    color: #333;
+  background-color: #fbe7c4;
+  color: #8a6313;
 }
 
 .btn-pastel-yellow:hover {
-    background-color: #f8d8a3;
-    color: #000;
+  background-color: #f8d8a3;
+  color: #6e4f0e;
 }
 
 .btn-pastel-purple {
-    background-color: #d6c9f7;
-    color: #333;
+  background-color: #d6c9f7;
+  color: #4f2f8c;
 }
 
 .btn-pastel-purple:hover {
-    background-color: #c1acf2;
-    color: #000;
+  background-color: #c1acf2;
+  color: #3a1d70;
 }
 
 .btn-pastel-gray {
-    background-color: #d9d9d9;
-    color: #333;
+  background-color: #e2e2e2;
+  color: #4a4a4a;
 }
 
 .btn-pastel-gray:hover {
-    background-color: #cfcfcf;
-    color: #000;
+  background-color: #d9d9d9;
+  color: #333333;
 }
 
-/* Colores pastel para las tarjetas */
+/* Card color schemes with improved gradients */
 .card-diseño {
-    background-color: #e8f5e9; /* Verde pastel */
-    color: #1b5e20;
+  background: linear-gradient(to bottom right, #e8f5e9, #c8e6c9);
+  color: #1b5e20;
 }
 
 .card-servidor {
-    background-color: #e3f2fd; /* Azul pastel */
-    color: #0d47a1;
+  background: linear-gradient(to bottom right, #e3f2fd, #bbdefb);
+  color: #0d47a1;
 }
 
 .card-cliente {
-    background-color: #ffebee; /* Rojo pastel */
-    color: #b71c1c;
+  background: linear-gradient(to bottom right, #ffebee, #ffcdd2);
+  color: #b71c1c;
 }
 
 .card-empresa {
-    background-color: #fff8e1; /* Amarillo pastel */
-    color: #f57f17;
+  background: linear-gradient(to bottom right, #fff8e1, #ffecb3);
+  color: #f57f17;
 }
 
 .card-despliegue {
-    background-color: #f3e5f5; /* Morado pastel */
-    color: #4a148c;
+  background: linear-gradient(to bottom right, #f3e5f5, #e1bee7);
+  color: #4a148c;
 }
 
 .card-ingles {
-    background-color: #f5f5f5; /* Gris claro */
-    color: #424242;
+  background: linear-gradient(to bottom right, #f5f5f5, #e0e0e0);
+  color: #424242;
 }
 
-/* Efecto hover para destacar */
-.card:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s ease-in-out;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  h1.mb-4 {
+    font-size: 2.2rem;
+  }
+  
+  .card-title {
+    font-size: 1.3rem;
+  }
+  
+  .btn {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 576px) {
+  h1.mb-4 {
+    font-size: 1.8rem;
+  }
+  
+  .card-title {
+    font-size: 1.2rem;
+  }
+  
+  .btn {
+    padding: 0.4rem 1rem;
+    width: 100%;
+    margin: 0.3rem 0;
+  }
+  
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+/* Animation for page load */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.row > div {
+  animation: fadeInUp 0.6s ease forwards;
+  opacity: 0;
+}
+
+.row > div:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.row > div:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.row > div:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+.row > div:nth-child(5) {
+  animation-delay: 0.8s;
+}
+
+.row > div:nth-child(6) {
+  animation-delay: 1s;
+}
+
+/* Footer styling - estilo como en la imagen */
+.footer-simple {
+  margin-top: 3rem;
+  padding: 15px;
+  text-align: center;
+  color: white;
+}
+
+.footer-text {
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.github-button {
+  display: inline-flex;
+  align-items: center;
+  background-color: white;
+  color: #333;
+  font-weight: 500;
+  padding: 12px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.github-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.github-button i.fa-github {
+  margin-right: 10px;
+  font-size: 1.25rem;
+}
+
+.github-button .fa-star {
+  color: #ffca28;
+  margin-left: 8px;
+  font-size: 1.1rem;
+}
+
+/* Estilo para el footer en la página de quiz */
+.quiz-footer {
+  text-align: center;
+  margin-top: 2rem;
+  color: #555;
+}
+
+.quiz-footer .github-button {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.quiz-footer .github-button:hover {
+  background-color: #e0e0e0;
 }
