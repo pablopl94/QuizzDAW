@@ -14,6 +14,28 @@
     <link rel="stylesheet" href="styles_general.css">
 </head>
 <body class="bg-warning">
+    <!-- Modal de bienvenida -->
+    <div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-warning">
+                    <h5 class="modal-title" id="welcomeModalLabel">¡Hola! Soy Pablo, el creador de QUIZZ DAW</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="img/señalar.png" alt="Pablo señalando" class="welcome-image mb-3">
+                    <p class="welcome-text">¡Gracias por visitar mi aplicación QUIZZ DAW! Si te resulta útil, me ayudaría mucho si dejas una estrella en mi repositorio de GitHub.</p>
+                    <a href="https://github.com/pablopl94/QuizzDAW" target="_blank" class="github-button-modal">
+                        <i class="fab fa-github"></i> Ver en GitHub <i class="fas fa-star"></i>
+                    </a>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container text-center my-5">
         <h1 class="mb-4 text-white">Menú de Asignaturas</h1>
         <p class="lead text-white mb-5">Selecciona una asignatura y un trimestre para comenzar el test</p>
@@ -151,5 +173,20 @@
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Script para mostrar el modal solo la primera vez -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Comprobar si es la primera visita
+            if (!localStorage.getItem('quizz_daw_visited')) {
+                // Es la primera visita, mostrar el modal
+                var welcomeModal = new bootstrap.Modal(document.getElementById('welcomeModal'), {});
+                welcomeModal.show();
+                
+                // Guardar en localStorage que ya ha visitado la página
+                localStorage.setItem('quizz_daw_visited', 'true');
+            }
+        });
+    </script>
 </body>
 </html>
