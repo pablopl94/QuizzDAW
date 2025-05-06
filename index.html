@@ -180,6 +180,20 @@
             var welcomeModal = new bootstrap.Modal(document.getElementById('welcomeModal'));
             welcomeModal.show();
         });
+
+        // --------------------------------------------
+        // 📝 Versión comentada: mostrar solo la primera vez que el usuario entra
+        // Puedes activarla más adelante si prefieres no mostrar el modal cada vez.
+        //
+        // if (!localStorage.getItem('quizz_daw_visited')) {
+        //     // Es la primera visita, mostrar el modal
+        //     var welcomeModal = new bootstrap.Modal(document.getElementById('welcomeModal'));
+        //     welcomeModal.show();
+        //
+        //     // Guardar en localStorage que ya ha visitado la página
+        //     localStorage.setItem('quizz_daw_visited', 'true');
+        // }
+        // --------------------------------------------
     </script>
 </body>
 </html>
