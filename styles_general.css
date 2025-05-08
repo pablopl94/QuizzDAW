@@ -452,7 +452,7 @@ body .card, .container .card {
     right: -8px;
   }
   .character-img {
-    max-width: 140px !important;
+    max-width: 200px !important;
   }
   .modal-footer .github-btn,
   .modal-footer .btn-secondary {
@@ -477,7 +477,7 @@ body .card, .container .card {
     right: -7px;
   }
   .character-img {
-    max-width: 100px !important;
+    max-width: 200px !important;
   }
   .modal-footer .github-btn,
   .modal-footer .btn-secondary {
