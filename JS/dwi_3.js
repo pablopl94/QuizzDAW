@@ -1,4 +1,10 @@
-const quizData = [
+/**
+ * Datos del quiz de Diseño de Interfaces - Repaso 1/2
+ * Archivo convertido al nuevo formato
+ */
+
+// Definir los datos del quiz
+const quizQuestions = [
     {
         question: "¿Cuál es el objetivo principal de la accesibilidad web?",
         a: "Aumentar la velocidad de carga de las páginas web",
@@ -159,71 +165,11 @@ const quizData = [
         d: "Sitio institucional",
         correct: "b",
     }
-];
+];;
 
-let currentQuestionIndex = 0;
-let score = 0;
-
-const questionEl = document.getElementById("question");
-const options = document.querySelectorAll(".option");
-const resultEl = document.getElementById("result");
-const quizContainer = document.getElementById("quiz-container");
-
-loadQuiz();
-
-function loadQuiz() {
-    deselectOptions();
-    const currentQuizData = quizData[currentQuestionIndex];
-    questionEl.innerText = currentQuizData.question;
-    options[0].innerText = currentQuizData.a;
-    options[1].innerText = currentQuizData.b;
-    options[2].innerText = currentQuizData.c;
-    options[3].innerText = currentQuizData.d;
-}
-
-function deselectOptions() {
-    options.forEach(option => {
-        option.classList.remove("correct", "incorrect");
-        option.disabled = false;
-    });
-}
-
-options.forEach(option => {
-    option.addEventListener("click", () => {
-        const answer = option.id;
-        const currentQuizData = quizData[currentQuestionIndex];
-
-        if (answer === currentQuizData.correct) {
-            option.classList.add("correct");
-            score++;
-        } else {
-            option.classList.add("incorrect");
-        }
-
-        options.forEach(opt => opt.disabled = true);
-
-        setTimeout(() => {
-            currentQuestionIndex++;
-            if (currentQuestionIndex < quizData.length) {
-                loadQuiz();
-            } else {
-                showResults();
-            }
-        }, 1000);
-    });
-});
-
-function showResults() {
-    quizContainer.innerHTML = `
-        <div class="result-box">
-            <h2>Resultados</h2>
-            <p>Respuestas correctas: <strong>${score}</strong></p>
-            <p>Respuestas incorrectas: <strong>${quizData.length - score}</strong></p>
-            <button onclick="goToMenu()" class="btn-return">Volver al Menú</button>
-        </div>
-    `;
-}
-
-function goToMenu() {
-    window.location.href = "index.html";
+// Inicializar el quiz con los datos
+if (typeof initializeQuiz === 'function') {
+    initializeQuiz(quizQuestions);
+} else {
+    console.error("Error: El motor del quiz no está cargado correctamente");
 }

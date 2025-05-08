@@ -1,4 +1,10 @@
-const quizData = [
+/**
+ * Datos del quiz de Empresa e Iniciativa Emprendedora - 1º Trimestre
+ * Archivo convertido al nuevo formato
+ */
+
+// Definir los datos del quiz
+const quizQuestions = [
     {
         question: "Al conjunto de cualidades, habilidades y conocimientos necesarios que poseen los individuos para poder gestionar su propio proyecto o itinerario profesional, o crear su propio negocio como alternativa (no como última salida) al trabajo por cuenta ajena, lo llamamos:",
         a: "Capacidad creativa.",
@@ -188,71 +194,11 @@ const quizData = [
         c: "El confirming.",
         correct: "c",
     }
-];
+];;
 
-let currentQuestionIndex = 0;
-let score = 0;
-
-const questionEl = document.getElementById("question");
-const options = document.querySelectorAll(".option");
-const resultEl = document.getElementById("result");
-const quizContainer = document.getElementById("quiz-container");
-
-loadQuiz();
-
-function loadQuiz() {
-    deselectOptions();
-    const currentQuizData = quizData[currentQuestionIndex];
-    questionEl.innerText = currentQuizData.question;
-    options[0].innerText = currentQuizData.a;
-    options[1].innerText = currentQuizData.b;
-    options[2].innerText = currentQuizData.c;
-    options[3].innerText = currentQuizData.d;
-}
-
-function deselectOptions() {
-    options.forEach(option => {
-        option.classList.remove("correct", "incorrect");
-        option.disabled = false;
-    });
-}
-
-options.forEach(option => {
-    option.addEventListener("click", () => {
-        const answer = option.id;
-        const currentQuizData = quizData[currentQuestionIndex];
-
-        if (answer === currentQuizData.correct) {
-            option.classList.add("correct");
-            score++;
-        } else {
-            option.classList.add("incorrect");
-        }
-
-        options.forEach(opt => opt.disabled = true);
-
-        setTimeout(() => {
-            currentQuestionIndex++;
-            if (currentQuestionIndex < quizData.length) {
-                loadQuiz();
-            } else {
-                showResults();
-            }
-        }, 1000);
-    });
-});
-
-function showResults() {
-    quizContainer.innerHTML = `
-        <div class="result-box">
-            <h2>Resultados</h2>
-            <p>Respuestas correctas: <strong>${score}</strong></p>
-            <p>Respuestas incorrectas: <strong>${quizData.length - score}</strong></p>
-            <button onclick="goToMenu()" class="btn-return">Volver al Menú</button>
-        </div>
-    `;
-}
-
-function goToMenu() {
-    window.location.href = "index.html";
+// Inicializar el quiz con los datos
+if (typeof initializeQuiz === 'function') {
+    initializeQuiz(quizQuestions);
+} else {
+    console.error("Error: El motor del quiz no está cargado correctamente");
 }

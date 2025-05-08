@@ -62,8 +62,8 @@
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- Agregar el script común para todos los quizzes -->
-    <script src="JS/quiz_common.js"></script>
+    <!-- Cargar el motor del quiz primero -->
+    <script src="JS/quiz_engine.js"></script>
     
     <script>
         // Función para obtener parámetros de la URL
@@ -75,45 +75,27 @@
             };
         }
 
-        // Variable global para rastrear los clics en opciones y actualizar el contador
-        let globalCurrentQuestionIndex = 0;
+        // Variable global para rastrear el contador de preguntas
         let totalQuestions = 20; // Valor predeterminado
+
+        // Función para actualizar el contador de preguntas (será usada por el motor de quiz)
+        function updateQuestionCounter(currentQuestion, totalQuestions) {
+            const counter = document.getElementById('question-counter');
+            counter.textContent = `Pregunta ${currentQuestion} de ${totalQuestions}`;
+        }
 
         // Cargar el script del quiz dependiendo del parámetro en la URL
         function loadQuizScript(subject, trimestre) {
             const script = document.createElement('script');
-            script.src = `JS/${subject}_${trimestre}.js`; // Asegúrate de que la ruta y el nombre del script sean correctos
+            script.src = `JS/${subject}_${trimestre}.js`; // Archivo específico de preguntas
             script.onload = () => {
                 console.log(`Script ${subject}_${trimestre}.js cargado correctamente.`);
-                
-                // Determinar el número total de preguntas según el script cargado
-                if (typeof quizData !== 'undefined') {
-                    totalQuestions = quizData.length;
-                } else if (typeof empresaTest2 !== 'undefined' && empresaTest2.preguntas) {
-                    totalQuestions = empresaTest2.preguntas.length;
-                } else if (typeof shuffledQuizData !== 'undefined') {
-                    totalQuestions = shuffledQuizData.length;
-                }
-                
-                // Configurar el monitoreo de clics para el contador
-                setupQuestionCounter();
-                
-                // Inicializar el contador con la primera pregunta
-                updateQuestionCounter(1, totalQuestions);
-                
-                // Cargar el quiz normalmente
-                loadQuiz();
                 
                 // Add subject-specific class to body for styling
                 document.body.classList.add(`subject-${subject}`);
                 
                 // Update the quiz description based on subject
                 updateQuizDescription(subject, trimestre);
-                
-                // Inicializar el comportamiento común para todos los quizzes
-                setTimeout(() => {
-                    initializeQuizBehavior();
-                }, 100);
             };
             script.onerror = () => {
                 alert('Error al cargar el script del quiz.');
@@ -158,58 +140,7 @@
             descEl.textContent = description;
         }
 
-        // Update question counter
-        function updateQuestionCounter(currentQuestion, totalQuestions) {
-            const counter = document.getElementById('question-counter');
-            counter.textContent = `Pregunta ${currentQuestion} de ${totalQuestions}`;
-        }
-
-        // Función para configurar el contador de preguntas mediante un monitoreo de clics
-        function setupQuestionCounter() {
-            // Agregamos eventos de clic a todas las opciones
-            document.querySelectorAll('.option').forEach(option => {
-                option.addEventListener('click', function() {
-                    // Esperar un momento para que la animación termine y se cambie de pregunta
-                    setTimeout(() => {
-                        globalCurrentQuestionIndex++;
-                        
-                        // Actualizar el contador si aún hay preguntas
-                        if (globalCurrentQuestionIndex < totalQuestions) {
-                            updateQuestionCounter(globalCurrentQuestionIndex + 1, totalQuestions);
-                        }
-                    }, 1000); // Tiempo aproximado antes de que cambie la pregunta
-                });
-            });
-        }
-
-        // Función para inicializar el quiz
-        function loadQuiz() {
-            const params = getQueryParams();
-            const subjectTitle = document.getElementById('subject-title');
-            
-            let subjectName = '';
-            switch(params.subject) {
-                case 'dwi': subjectName = 'Diseño de Interfaces'; break;
-                case 'servidor': subjectName = 'Servidor'; break;
-                case 'cliente': subjectName = 'Cliente'; break;
-                case 'empresa': subjectName = 'Empresa e Iniciativa'; break;
-                case 'despliegue': subjectName = 'Despliegue'; break;
-                case 'ingles': subjectName = 'Inglés'; break;
-                default: subjectName = params.subject;
-            }
-            
-            subjectTitle.textContent = `${subjectName} - ${params.trimestre}º Trimestre`;
-
-            // Reemplazar la función loadQuiz original para que no afecte nuestro contador global
-            if (window.loadQuiz) {
-                const originalLoadQuiz = window.loadQuiz;
-                window.loadQuiz = function() {
-                    originalLoadQuiz.apply(this, arguments);
-                };
-            }
-        }
-
-        // Redirige al menú principal
+        // Redirige al menú principal (usado por el motor de quiz)
         function goToMenu() {
             window.location.href = "index.html";
         }

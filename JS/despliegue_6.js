@@ -1,4 +1,10 @@
-const quizData = [
+/**
+ * Datos del quiz de Despliegue de Aplicaciones Web - 6º Trimestre
+ * Archivo convertido al nuevo formato
+ */
+
+// Definir los datos del quiz
+const quizQuestions = [
     {
         question: "¿Qué es un servidor de aplicaciones?",
         a: "Un servidor donde va a funcionar una aplicación escrita en un lenguaje de programación específico",
@@ -199,82 +205,11 @@ const quizData = [
         d: "Permite ejecutar más aplicaciones simultáneamente",
         correct: "b",
     }
-];
+];;
 
-
-// Mezclar las preguntas y seleccionar 20 al azar
-const shuffledQuizData = quizData.sort(() => Math.random() - 0.5);
-
-let currentQuestionIndex = 0;
-let score = 0;
-let incorrect = 0;
-
-const questionEl = document.getElementById("question");
-const options = document.querySelectorAll(".option");
-const resultEl = document.getElementById("result");
-const quizContainer = document.getElementById("quiz-container");
-
-loadQuiz();
-
-function loadQuiz() {
-    deselectOptions();
-    const currentQuizData = shuffledQuizData[currentQuestionIndex];
-    questionEl.innerText = currentQuizData.question;
-    
-    // Obtener solo el texto de la opción, sin la letra del índice
-    options.forEach((option, index) => {
-        const optionLetter = String.fromCharCode(97 + index); // 'a', 'b', 'c', 'd'
-        const optionText = option.querySelector(".option-text");
-        if (optionText) {
-            optionText.innerText = currentQuizData[optionLetter];
-        } else {
-            option.innerText = currentQuizData[optionLetter];
-        }
-    });
-}
-
-function deselectOptions() {
-    options.forEach(option => {
-        option.classList.remove("correct", "incorrect");
-        option.disabled = false;
-    });
-}
-
-options.forEach(option => {
-    option.addEventListener("click", () => {
-        const answer = option.id;
-        if (answer === shuffledQuizData[currentQuestionIndex].correct) {
-            option.classList.add("correct");
-            score++;
-        } else {
-            option.classList.add("incorrect");
-            incorrect++;
-        }
-
-        options.forEach(opt => opt.disabled = true);
-
-        setTimeout(() => {
-            currentQuestionIndex++;
-            if (currentQuestionIndex < shuffledQuizData.length) {
-                loadQuiz();
-            } else {
-                showResults();
-            }
-        }, 1000);
-    });
-});
-
-function showResults() {
-    quizContainer.innerHTML = `
-        <div class="result-box">
-            <h2>Resultados</h2>
-            <p>Respuestas correctas: <strong>${score}</strong></p>
-            <p>Respuestas incorrectas: <strong>${incorrect}</strong></p>
-            <button onclick="goToMenu()" class="btn-return">Volver al Menú</button>
-        </div>
-    `;
-}
-
-function goToMenu() {
-    window.location.href = "index.html";
+// Inicializar el quiz con los datos
+if (typeof initializeQuiz === 'function') {
+    initializeQuiz(quizQuestions);
+} else {
+    console.error("Error: El motor del quiz no está cargado correctamente");
 }

@@ -1,4 +1,10 @@
-const quizData = [
+/**
+ * Datos del quiz de Inglés Técnico - 2º Trimestre
+ * Archivo convertido al nuevo formato
+ */
+
+// Definir los datos del quiz
+const quizQuestions = [
 	{
 	  question: "We're looking for three programmers to help us develop our web-based __________________.",
 	  a: "applications",
@@ -319,75 +325,11 @@ const quizData = [
 	  d: "user friendly",
 	  correct: "c",
 	}
-];
+];;
 
-// Mezclar las preguntas y seleccionar 30 al azar
-const shuffledQuizData = quizData.sort(() => Math.random() - 0.5);
-
-let currentQuestionIndex = 0;
-let score = 0;
-let incorrect = 0;
-
-const questionEl = document.getElementById("question");
-const options = document.querySelectorAll(".option");
-const resultEl = document.getElementById("result");
-const quizContainer = document.getElementById("quiz-container");
-
-loadQuiz();
-
-function loadQuiz() {
-    deselectOptions();
-    const currentQuizData = quizData[currentQuestionIndex];
-    questionEl.innerText = currentQuizData.question;
-    options[0].innerText = currentQuizData.a;
-    options[1].innerText = currentQuizData.b;
-    options[2].innerText = currentQuizData.c;
-	options[3].innerText = currentQuizData.d;
-}
-
-function deselectOptions() {
-    options.forEach(option => {
-        option.classList.remove("correct", "incorrect");
-        option.disabled = false;
-    });
-}
-
-options.forEach(option => {
-    option.addEventListener("click", () => {
-        const answer = option.id;
-        const currentQuizData = quizData[currentQuestionIndex];
-
-        if (answer === currentQuizData.correct) {
-            option.classList.add("correct");
-            score++;
-        } else {
-            option.classList.add("incorrect");
-        }
-
-        options.forEach(opt => opt.disabled = true);
-
-        setTimeout(() => {
-            currentQuestionIndex++;
-            if (currentQuestionIndex < quizData.length) {
-                loadQuiz();
-            } else {
-                showResults();
-            }
-        }, 1000);
-    });
-});
-
-function showResults() {
-    quizContainer.innerHTML = `
-        <div class="result-box">
-            <h2>Results</h2>
-            <p>Correct answers: <strong>${score}</strong></p>
-            <p>Incorrect answers: <strong>${quizData.length - score}</strong></p>
-            <button onclick="goToMenu()" class="btn-return">Return to Menu</button>
-        </div>
-    `;
-}
-
-function goToMenu() {
-    window.location.href = "index.html";
+// Inicializar el quiz con los datos
+if (typeof initializeQuiz === 'function') {
+    initializeQuiz(quizQuestions);
+} else {
+    console.error("Error: El motor del quiz no está cargado correctamente");
 }
