@@ -94,17 +94,18 @@ body {
   background-color: var(--bg-light);
   color: var(--text-dark);
   border: 2px solid #e0e0e0;
-  padding: 1.25rem 1.5rem;
   font-size: 1.1rem;
   font-weight: 500;
   border-radius: var(--border-radius-md);
   cursor: pointer;
   transition: var(--transition-standard);
   text-align: left;
-  display: flex;
-  align-items: center;
   position: relative;
   overflow: hidden;
+  /* Asegurar buen layout para las opciones */
+  display: flex;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
 }
 
 .option::before {
@@ -465,4 +466,59 @@ body {
 
 .subject-ingles #quiz-container::before {
   background: linear-gradient(to right, #d9d9d9, #f5f5f5);
+}
+
+/* Estilo para opciones deshabilitadas */
+.option.option-disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none !important;
+  transition: none;
+}
+
+.option.option-disabled:hover {
+  transform: none;
+  box-shadow: none;
+  background-color: var(--bg-light);
+}
+
+.option.option-disabled:hover::before {
+  background-color: #e0e0e0;
+}
+
+/* No cambiar el estilo de hover para opciones correctas o incorrectas deshabilitadas */
+.option.correct.option-disabled:hover::before,
+.option.correct-answer.option-disabled:hover::before {
+  background-color: var(--success-color);
+}
+
+.option.incorrect.option-disabled:hover::before {
+  background-color: var(--error-color);
+}
+
+/* Mejorar el espaciado entre letras y opciones */
+.option-letter {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  margin-right: 15px;
+  font-weight: 600;
+  color: var(--primary-dark);
+  flex-shrink: 0;
+}
+
+.option-text {
+  flex: 1;
+  padding-left: 5px;
+}
+
+/* Asegurar que las opciones tienen un buen layout */
+.option {
+  display: flex;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
 }

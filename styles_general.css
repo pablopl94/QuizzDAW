@@ -327,89 +327,162 @@ body .card, .container .card {
   background-color: #e0e0e0;
 }
 
-/* Estilos para el modal de bienvenida */
+/* -- MODAL BIENVENIDA PERSONALIZADO -- */
 .modal-content {
-  border-radius: 15px;
   border: none;
+  border-radius: 12px;
   overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
 }
 
 .modal-header {
+  padding: 0.75rem 1.5rem;
   border-bottom: none;
-  padding: 20px 20px 10px 20px;
 }
-
 .modal-header .modal-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.125rem;
   font-weight: 700;
   color: #fff;
 }
+.modal-header .btn-close {
+  filter: invert(1);
+  opacity: 0.7;
+}
 
+/* Cuerpo: bocadillo + personaje en fila */
 .modal-body {
-  padding: 20px 30px;
+  background: #fff;
+  padding: 1rem 1.5rem 0.5rem;
+  gap: 1rem;
+}
+.speech-bubble {
+  position: relative;
+  background: #fff;
+  border: 2px solid #ffc107;
+  border-radius: 20px;
+  padding: 16px 20px;
+  max-width: 380px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: #333;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+/* Flecha del bocadillo apuntando al personaje */
+.speech-bubble::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -10px;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border: 2px solid #ffc107;
+  border-left: none;
+  border-bottom: none;
+  transform: rotate(45deg);
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.05);
 }
 
-.welcome-image {
-  max-width: 100%;
+/* Imagen del personaje */
+.character-img {
+  max-width: 200px;
   height: auto;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  box-shadow: var(--shadow-medium);
+  flex-shrink: 0;
+  margin-top: -0.25rem;
 }
 
-.welcome-text {
-  font-size: 1.1rem;
-  margin-bottom: 25px;
-  color: #444;
-  line-height: 1.6;
+/* Footer: botones centrados */
+.modal-footer {
+  background: #fff;
+  border-top: none;
+  padding: 0.5rem 1.5rem 1rem;
+  gap: 0.75rem;
 }
-
-.github-button-modal {
+.github-btn {
   display: inline-flex;
   align-items: center;
+  gap: 0.5rem;
   background-color: #ffc107;
-  color: #333;
-  font-weight: 500;
-  padding: 12px 25px;
-  border-radius: 50px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  margin: 15px 0;
-}
-
-.github-button-modal:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-  background-color: #ffca28;
-  color: #333;
-}
-
-.modal-footer {
-  border-top: none;
-  justify-content: center;
-  padding-bottom: 20px;
-}
-
-.modal-footer .btn-secondary {
-  background-color: #e0e0e0;
-  color: #444;
+  color: #212529;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  padding: 0.5rem 1.25rem;
   border: none;
-  transition: all 0.3s ease;
+  border-radius: 20px;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
 }
-
+.github-btn:hover {
+  background-color: #ffca28;
+  transform: translateY(-2px);
+}
+.github-btn .fa-star {
+  color: #000;
+}
+.modal-footer .btn-secondary {
+  background-color: #d9d9d9;
+  color: #333;
+  font-family: 'Poppins', sans-serif;
+  padding: 0.5rem 1.25rem;
+  border: none;
+  border-radius: 20px;
+  transition: background 0.2s, transform 0.2s;
+}
 .modal-footer .btn-secondary:hover {
-  background-color: #d0d0d0;
+  background-color: #c4c4c4;
   transform: translateY(-2px);
 }
 
-/* Estilos responsive para el modal */
-@media (max-width: 576px) {
-  .welcome-text {
-    font-size: 1rem;
+/* -- RESPONSIVE: MÓVIL HASTA 768px -- */
+@media (max-width: 768px) {
+  .modal-body {
+    padding: 0.75rem 1rem 0.5rem !important;
+    gap: 0.5rem;
   }
-  
-  .github-button-modal {
-    width: 100%;
+  .speech-bubble {
+    max-width: 60%;
+    padding: 12px 16px !important;
+    font-size: 0.85rem !important;
+  }
+  .speech-bubble::after {
+    width: 16px;
+    height: 16px;
+    right: -8px;
+  }
+  .character-img {
+    max-width: 140px !important;
+  }
+  .modal-footer .github-btn,
+  .modal-footer .btn-secondary {
+    font-size: 0.85rem !important;
+    padding: 0.4rem 1rem !important;
+  }
+}
+
+/* -- RESPONSIVE: MÓVIL ESTRECHO ≤ 576px -- */
+@media (max-width: 576px) {
+  .modal-body {
+    padding: 0.5rem 0.75rem 0.4rem !important;
+  }
+  .speech-bubble {
+    max-width: 55%;
+    padding: 10px 14px !important;
+    font-size: 0.75rem !important;
+  }
+  .speech-bubble::after {
+    width: 14px;
+    height: 14px;
+    right: -7px;
+  }
+  .character-img {
+    max-width: 100px !important;
+  }
+  .modal-footer .github-btn,
+  .modal-footer .btn-secondary {
+    font-size: 0.75rem !important;
+    padding: 0.3rem 0.8rem !important;
   }
 }
 

@@ -9,17 +9,31 @@ let score = 0;
 let incorrect = 0;
 let quizData = []; // Será llenado por el archivo específico
 
-// Referencias DOM
-const questionEl = document.getElementById("question");
-const options = document.querySelectorAll(".option");
-const resultEl = document.getElementById("result");
-const quizContainer = document.getElementById("quiz-container");
+// Referencias DOM - ahora como variables (let) en lugar de constantes
+let questionEl;
+let options;
+let resultEl;
+let quizContainer;
+
+/**
+ * Actualiza las referencias a los elementos DOM
+ * Esta función es crucial para mantener las referencias actualizadas después de manipular el DOM
+ */
+function updateDOMReferences() {
+    questionEl = document.getElementById("question");
+    options = document.querySelectorAll(".option");
+    resultEl = document.getElementById("result");
+    quizContainer = document.getElementById("quiz-container");
+}
 
 /**
  * Inicializa el quiz con los datos proporcionados
  * @param {Array} data - Datos del quiz (preguntas, opciones, respuestas)
  */
 function initializeQuiz(data) {
+    // Obtener referencias iniciales
+    updateDOMReferences();
+    
     // Guardar los datos y mezclarlos
     quizData = data.sort(() => Math.random() - 0.5);
     
@@ -39,16 +53,19 @@ function initializeQuiz(data) {
  * Configura los eventos de clic para las opciones
  */
 function setupOptionsEvents() {
+    // Actualizar referencias para asegurarnos de tener las actuales
+    updateDOMReferences();
+    
     options.forEach(option => {
         // Eliminar eventos anteriores para evitar duplicados
         const newOption = option.cloneNode(true);
         option.parentNode.replaceChild(newOption, option);
     });
     
-    // Obtener referencias actualizadas
-    const updatedOptions = document.querySelectorAll(".option");
+    // Obtener referencias actualizadas después de reemplazar los elementos
+    updateDOMReferences();
     
-    updatedOptions.forEach(option => {
+    options.forEach(option => {
         option.addEventListener("click", function() {
             handleOptionClick(this);
         });
@@ -60,6 +77,9 @@ function setupOptionsEvents() {
  * @param {Element} selectedOption - La opción seleccionada
  */
 function handleOptionClick(selectedOption) {
+    // Asegurar que tenemos las referencias más recientes
+    updateDOMReferences();
+    
     const answer = selectedOption.id;
     const correctAnswer = quizData[currentQuestionIndex].correct;
     
@@ -67,6 +87,11 @@ function handleOptionClick(selectedOption) {
         // Respuesta correcta
         selectedOption.classList.add("correct");
         score++;
+        
+        // Para respuestas correctas, tiempo establecido a 1.5 segundos
+        setTimeout(() => {
+            goToNextQuestion();
+        }, 1500);
     } else {
         // Respuesta incorrecta
         selectedOption.classList.add("incorrect");
@@ -74,32 +99,47 @@ function handleOptionClick(selectedOption) {
         
         // Mostrar cuál era la respuesta correcta
         const correctOption = document.getElementById(correctAnswer);
-        correctOption.classList.add("correct-answer");
+        if (correctOption) { // Verificamos que exista para evitar errores
+            correctOption.classList.add("correct-answer");
+        }
+        
+        // Para respuestas incorrectas, tiempo establecido a 1.5 segundos
+        setTimeout(() => {
+            goToNextQuestion();
+        }, 1500);
     }
     
-    // Deshabilitar todas las opciones
-    options.forEach(opt => opt.disabled = true);
-    
-    // Esperar y luego avanzar a la siguiente pregunta
-    setTimeout(() => {
-        currentQuestionIndex++;
-        if (currentQuestionIndex < quizData.length) {
-            loadQuiz();
-            
-            // Actualizar contador de preguntas si existe la función
-            if (typeof updateQuestionCounter === 'function') {
-                updateQuestionCounter(currentQuestionIndex + 1, quizData.length);
-            }
-        } else {
-            showResults();
+    // Deshabilitar todas las opciones con referencias actualizadas
+    options.forEach(opt => {
+        opt.disabled = true;
+        opt.classList.add("option-disabled"); // Añadir clase para estilo visual
+    });
+}
+
+/**
+ * Función para ir a la siguiente pregunta
+ */
+function goToNextQuestion() {
+    currentQuestionIndex++;
+    if (currentQuestionIndex < quizData.length) {
+        loadQuiz();
+        
+        // Actualizar contador de preguntas si existe la función
+        if (typeof updateQuestionCounter === 'function') {
+            updateQuestionCounter(currentQuestionIndex + 1, quizData.length);
         }
-    }, 1500);
+    } else {
+        showResults();
+    }
 }
 
 /**
  * Carga la pregunta actual en la interfaz
  */
 function loadQuiz() {
+    // Asegurarnos de tener referencias actualizadas
+    updateDOMReferences();
+    
     deselectOptions();
     const currentQuizData = quizData[currentQuestionIndex];
     questionEl.innerText = currentQuizData.question;
@@ -121,8 +161,11 @@ function loadQuiz() {
  * Limpia las clases y estados de las opciones
  */
 function deselectOptions() {
+    // Asegurarnos de tener referencias actualizadas
+    updateDOMReferences();
+    
     options.forEach(option => {
-        option.classList.remove("correct", "incorrect", "correct-answer");
+        option.classList.remove("correct", "incorrect", "correct-answer", "option-disabled");
         option.disabled = false;
     });
 }
@@ -131,6 +174,9 @@ function deselectOptions() {
  * Muestra los resultados del quiz
  */
 function showResults() {
+    // Asegurarnos de tener referencias actualizadas
+    updateDOMReferences();
+    
     quizContainer.innerHTML = `
         <div class="result-box">
             <h2>Resultados</h2>

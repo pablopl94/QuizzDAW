@@ -15,26 +15,48 @@
 </head>
 <body class="bg-warning">
     <!-- Modal de bienvenida -->
-    <div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header bg-warning">
-                    <h5 class="modal-title" id="welcomeModalLabel">¡Hola! Soy Pablo, el creador de QUIZZ DAW</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center">
-                    <img src="img/señalar.png" alt="Pablo señalando" class="welcome-image mb-3">
-                    <p class="welcome-text">¡Gracias por visitar mi aplicación QUIZZ DAW! Si te resulta útil, me ayudaría mucho si dejas una estrella en mi repositorio de GitHub.</p>
-                    <a href="https://github.com/pablopl94/QuizzDAW" target="_blank" class="github-button-modal">
-                        <i class="fab fa-github"></i> Ver en GitHub <i class="fas fa-star"></i>
-                    </a>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                </div>
-            </div>
+ <!-- Modal de bienvenida -->
+<div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+  
+        <!-- Header -->
+        <div class="modal-header bg-warning">
+          <h5 class="modal-title" id="welcomeModalLabel">
+            ¡Hola! Soy Pablo, el creador de QUIZZ DAW
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
+  
+        <!-- Body -->
+        <div class="modal-body d-flex align-items-center justify-content-center">
+          <!-- Bocadillo -->
+          <div class="speech-bubble">
+            <p>
+              ¡Gracias por visitar mi aplicación QUIZZ DAW! Si te resulta útil, me ayudaría mucho si dejas una estrella en mi repositorio de GitHub.
+            </p>
+          </div>
+          <!-- Personaje -->
+          <img src="img/señalar.png" alt="Pablo señalando" class="character-img">
+        </div>
+  
+        <!-- Footer -->
+        <div class="modal-footer justify-content-center">
+          <a href="https://github.com/pablopl94/QuizzDAW"
+             target="_blank"
+             class="btn btn-warning github-btn">
+            <i class="fab fa-github"></i> Ver en GitHub <i class="fas fa-star"></i>
+          </a>
+          <button type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal">
+            Cerrar
+          </button>
+        </div>
+  
+      </div>
     </div>
+  </div>
 
     <div class="container text-center my-5" style="padding-top: 0.5rem;">
         <h1 class="titulo">Menú de Asignaturas</h1>
@@ -279,18 +301,15 @@
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- Script para mostrar el modal solo la primera vez -->
+    <!-- Script para mostrar el modal -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Comprobar si es la primera visita
-            if (!localStorage.getItem('quizz_daw_visited')) {
-                // Es la primera visita, mostrar el modal
-                var welcomeModal = new bootstrap.Modal(document.getElementById('welcomeModal'));
-                welcomeModal.show();
-                
-                // Guardar en localStorage que ya ha visitado la página
-                localStorage.setItem('quizz_daw_visited', 'true');
-            }
+            // Para depuración: forzar que el modal se muestre siempre
+            var welcomeModal = new bootstrap.Modal(document.getElementById('welcomeModal'));
+            welcomeModal.show();
+            
+            // Comentado temporalmente para depuración
+            // localStorage.setItem('quizz_daw_visited', 'true');
             
             // Manejar la rotación del icono de flecha en los desplegables
             const cardHeaders = document.querySelectorAll('.card-header');
