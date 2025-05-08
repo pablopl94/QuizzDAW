@@ -205,42 +205,9 @@ const empresaTest2 = {
         "95€",
         "120€",
         "25€"
-      ],
-      respuestaCorrecta: 1
-    }
-  ],
-  // Ejercicios de desarrollo adicionales
-  ejerciciosDesarrollo: [
-    {
-      id: 1,
-      texto: "La empresa TechPrint S.L se dedica a la impresión 3D. La empresa tiene unos costes fijos de 25.000€ y está valorando la posibilidad de fabricar ellos mismos su producto o comprarlos a un proveedor externo. El proveedor le vende los productos terminados a 6.5€ la unidad. Si la empresa decide fabricarlos, sus costes variables medios serían de 3.5€ por unidad:",
-      apartados: [
-        "¿A partir de qué cantidad sería preferible producir a comprar?",
-        "Suponiendo que al final deciden fabricar, ¿cuál sería el punto muerto de la empresa si cada producto se vende a 10€?"
-      ],
-      puntuacion: 0.5
-    },
-    {
-      id: 2,
-      texto: "La empresa InnoTech S.L fabricó 2000 productos el pasado año. Para ello ha incurrido en los siguientes costes anuales: Materias primas: 3000€; Seguro contra robo: 600€; Combustible para vehículos: 350€; Energía eléctrica (sólo consumo): 750€; Mantenimientos (cuota fija): 500€; Transporte de mercancías: 200€; Salarios (indefinidos): 6500€; Seguridad Social (indefinidos): 1300€; Salarios (temporales): 2300€; Seguridad Social (temporales): 850€; Teléfono e Internet (cuota fija): 75€; Alquiler: 2500€; Material de oficina: 150€; Gestoría: 400€.",
-      apartados: [
-        "Calcula su Coste Fijo, Coste Variable, Coste Total, Coste Variable Medio y Coste Total Medio."
-      ],
-      puntuacion: 0.5
-    },
-    {
-      id: 3,
-      texto: "Describe brevemente los elementos principales del Plan Financiero, y la función de cada uno de ellos. ¿Pondrías en marcha tu empresa en función de los resultados obtenidos en el plan de empresa? Justifica brevemente tu decisión.",
-      apartados: [],
-      puntuacion: 0.5
-    },
-    {
-      id: 4,
-      texto: "Elabora la cuenta de pérdidas y ganancias hasta llegar al resultado del ejercicio teniendo en cuenta que el Impuesto de Sociedades (Impuesto sobre el beneficio) es del 25%. Datos: Venta de mercaderías: 12.000€; Seguridad social: 750€; Compra de mercaderías: 1.500€; Sueldos y salarios: 2.500€; Suministros: 150€; Otros ingresos financieros: 1.800€; Intereses por deudas: 2.500€; Amortización inmovilizado material: 1.800€",
-      apartados: [],
-      puntuacion: 0.5
-    }
-  ],
+        
+   ],
+
   generarResultados: function(respuestas) {
     let aciertos = 0;
     let fallos = 0;

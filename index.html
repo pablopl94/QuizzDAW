@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QUIZZ DAW - Test de Desarrollo de Aplicaciones Web</title>
+    <title class="">QUIZZ DAW - Test de Desarrollo de Aplicaciones Web</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome for icons -->
@@ -36,150 +36,231 @@
         </div>
     </div>
 
-    <div class="container text-center my-5">
-        <h1 class="mb-4 text-white">Menú de Asignaturas</h1>
+    <div class="container text-center my-5" style="padding-top: 0.5rem;">
+        <h1 class="titulo">Menú de Asignaturas</h1>
         <p class="lead text-white mb-5">Selecciona una asignatura y un trimestre para comenzar el test</p>
         
         <div class="row justify-content-center g-4">
             <!-- Diseño de Interfaces -->
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card card-diseño h-100">
-                    <div class="card-body">
-                        <h2 class="card-title">
-                            <i class="fas fa-laptop-code me-2"></i>Diseño de Interfaces
-                        </h2>
-                        <div class="d-grid gap-2">
-                            <a href="quiz.html?subject=dwi&trimestre=1" class="btn btn-pastel-green">
-                                <i class="fas fa-calendar-alt me-2"></i>1º Trimestre
-                            </a>
-                            <a href="quiz.html?subject=dwi&trimestre=2" class="btn btn-pastel-green">
-                                <i class="fas fa-calendar-alt me-2"></i>2º Trimestre
-                            </a>
-                            <a href="quiz.html?subject=dwi&trimestre=3" class="btn btn-pastel-green">
-                                <i class="fas fa-file-pdf me-2"></i>PDF Repaso 1/2
-                            </a>
-                            <a href="quiz.html?subject=dwi&trimestre=4" class="btn btn-pastel-green">
-                                <i class="fas fa-file-pdf me-2"></i>PDF Repaso 2/2
-                            </a>
+            <div class="col-md-6">
+                <div class="card card-diseño">
+                    <div class="card-header collapsed" data-bs-toggle="collapse" data-bs-target="#colapsoDwi" aria-expanded="false">
+                        <div>
+                            <i class="fas fa-laptop-code subject-icon"></i>
+                            <span class="card-title mb-0">Diseño de Interfaces</span>
+                        </div>
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </div>
+                    <div id="colapsoDwi" class="collapse">
+                        <div class="category-container">
+                            <!-- Exámenes -->
+                            <div class="category-section category-examenes">
+                                <div class="category-title">
+                                    <i class="fas fa-file-alt"></i> EXÁMENES
+                                </div>
+                                <a href="quiz.html?subject=dwi&trimestre=1" class="btn btn-pastel-green">
+                                    <i class="fas fa-calendar-alt me-2"></i>1º Trimestre
+                                </a>
+                                <a href="quiz.html?subject=dwi&trimestre=2" class="btn btn-pastel-green">
+                                    <i class="fas fa-calendar-alt me-2"></i>2º Trimestre
+                                </a>
+                            </div>
+                            
+                            <!-- Repaso -->
+                            <div class="category-section category-repaso">
+                                <div class="category-title">
+                                    <i class="fas fa-sync-alt"></i> REPASO
+                                </div>
+                                <a href="quiz.html?subject=dwi&trimestre=3" class="btn btn-pastel-green">
+                                    <i class="fas fa-file-pdf me-2"></i>PDF Repaso 1/2
+                                </a>
+                                <a href="quiz.html?subject=dwi&trimestre=4" class="btn btn-pastel-green">
+                                    <i class="fas fa-file-pdf me-2"></i>PDF Repaso 2/2
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Servidor -->
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card card-servidor h-100">
-                    <div class="card-body">
-                        <h2 class="card-title">
-                            <i class="fas fa-server me-2"></i>Servidor
-                        </h2>
-                        <div class="d-grid gap-2">
-                            <a href="quiz.html?subject=servidor&trimestre=1" class="btn btn-pastel-blue">
-                                <i class="fas fa-calendar-alt me-2"></i>1º Trimestre
-                            </a>
-                            <a href="quiz.html?subject=servidor&trimestre=2" class="btn btn-pastel-blue">
-                                <i class="fas fa-calendar-alt me-2"></i>2º Trimestre
-                            </a>
+            <div class="col-md-6">
+                <div class="card card-servidor">
+                    <div class="card-header collapsed" data-bs-toggle="collapse" data-bs-target="#colapsoServidor" aria-expanded="false">
+                        <div>
+                            <i class="fas fa-server subject-icon"></i>
+                            <span class="card-title mb-0">Servidor</span>
+                        </div>
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </div>
+                    <div id="colapsoServidor" class="collapse">
+                        <div class="category-container">
+                            <!-- Exámenes -->
+                            <div class="category-section category-examenes">
+                                <div class="category-title">
+                                    <i class="fas fa-file-alt"></i> EXÁMENES
+                                </div>
+                                <a href="quiz.html?subject=servidor&trimestre=1" class="btn btn-pastel-blue">
+                                    <i class="fas fa-calendar-alt me-2"></i>1º Trimestre
+                                </a>
+                                <a href="quiz.html?subject=servidor&trimestre=2" class="btn btn-pastel-blue">
+                                    <i class="fas fa-calendar-alt me-2"></i>2º Trimestre
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Cliente -->
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card card-cliente h-100">
-                    <div class="card-body">
-                        <h2 class="card-title">
-                            <i class="fas fa-users me-2"></i>Cliente
-                        </h2>
-                        <div class="d-grid gap-2">
-                            <a href="quiz.html?subject=cliente&trimestre=1" class="btn btn-pastel-red">
-                                <i class="fas fa-calendar-alt me-2"></i>1º Trimestre
-                            </a>
-                            <a href="quiz.html?subject=cliente&trimestre=2" class="btn btn-pastel-red">
-                                <i class="fas fa-calendar-alt me-2"></i>2º Trimestre
-                            </a>
+            <div class="col-md-6">
+                <div class="card card-cliente">
+                    <div class="card-header collapsed" data-bs-toggle="collapse" data-bs-target="#colapsoCliente" aria-expanded="false">
+                        <div>
+                            <i class="fas fa-users subject-icon"></i>
+                            <span class="card-title mb-0">Cliente</span>
+                        </div>
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </div>
+                    <div id="colapsoCliente" class="collapse">
+                        <div class="category-container">
+                            <!-- Exámenes -->
+                            <div class="category-section category-examenes">
+                                <div class="category-title">
+                                    <i class="fas fa-file-alt"></i> EXÁMENES
+                                </div>
+                                <a href="quiz.html?subject=cliente&trimestre=1" class="btn btn-pastel-red">
+                                    <i class="fas fa-calendar-alt me-2"></i>1º Trimestre
+                                </a>
+                                <a href="quiz.html?subject=cliente&trimestre=2" class="btn btn-pastel-red">
+                                    <i class="fas fa-calendar-alt me-2"></i>2º Trimestre
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Empresa -->
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card card-empresa h-100">
-                    <div class="card-body">
-                        <h2 class="card-title">
-                            <i class="fas fa-briefcase me-2"></i>Empresa e Iniciativa
-                        </h2>
-                        <div class="d-grid gap-2">
-                            <a href="quiz.html?subject=empresa&trimestre=1" class="btn btn-pastel-yellow">
-                                <i class="fas fa-calendar-alt me-2"></i>1º Trimestre
-                            </a>
-                            <a href="quiz.html?subject=empresa&trimestre=2" class="btn btn-pastel-yellow">
-                                <i class="fas fa-calendar-alt me-2"></i>2º Trimestre
-                            </a>
+            <div class="col-md-6">
+                <div class="card card-empresa">
+                    <div class="card-header collapsed" data-bs-toggle="collapse" data-bs-target="#colapsoEmpresa" aria-expanded="false">
+                        <div>
+                            <i class="fas fa-briefcase subject-icon"></i>
+                            <span class="card-title mb-0">Empresa e Iniciativa</span>
+                        </div>
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </div>
+                    <div id="colapsoEmpresa" class="collapse">
+                        <div class="category-container">
+                            <!-- Exámenes -->
+                            <div class="category-section category-examenes">
+                                <div class="category-title">
+                                    <i class="fas fa-file-alt"></i> EXÁMENES
+                                </div>
+                                <a href="quiz.html?subject=empresa&trimestre=1" class="btn btn-pastel-yellow">
+                                    <i class="fas fa-calendar-alt me-2"></i>1º Trimestre
+                                </a>
+                                <a href="quiz.html?subject=empresa&trimestre=2" class="btn btn-pastel-yellow">
+                                    <i class="fas fa-calendar-alt me-2"></i>2º Trimestre
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Despliegue -->
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card card-despliegue h-100">
-                    <div class="card-body">
-                        <h2 class="card-title">
-                            <i class="fas fa-cloud-upload-alt me-2"></i>Despliegue
-                        </h2>
-                        <div class="d-grid gap-2">
-                            <a href="quiz.html?subject=despliegue&trimestre=1" class="btn btn-pastel-purple">
-                                <i class="fas fa-calendar-alt me-2"></i> Examen 1º Trimestre
-                            </a>
-                            <a href="quiz.html?subject=despliegue&trimestre=2" class="btn btn-pastel-purple">
-                                <i class="fas fa-calendar-alt me-2"></i>Examen 2º Trimestre
-                            </a>
-                            <a href="quiz.html?subject=despliegue&trimestre=3" class="btn btn-pastel-purple">
-                                <i class="fas fa-book me-2"></i>Tema 1: Arquitecturas Web
-                            </a>
-                            <a href="quiz.html?subject=despliegue&trimestre=4" class="btn btn-pastel-purple">
-                                <i class="fas fa-book me-2"></i>Tema 2: Servidores Web
-                            </a>
-                            <a href="quiz.html?subject=despliegue&trimestre=5" class="btn btn-pastel-purple">
-                                <i class="fas fa-book me-2"></i>Tema 3: Servidores FTP
-                            </a>
-                            <a href="quiz.html?subject=despliegue&trimestre=6" class="btn btn-pastel-purple">
-                                <i class="fas fa-book me-2"></i>Tema 4: Servidores de Aplicaciones
-                            </a>
-                            <a href="quiz.html?subject=despliegue&trimestre=7" class="btn btn-pastel-purple">
-                                <i class="fas fa-book me-2"></i>Tema 5: Servicios de Red
-                            </a>
-                            <a href="quiz.html?subject=despliegue&trimestre=8" class="btn btn-pastel-purple">
-                                <i class="fas fa-book me-2"></i>Tema 6: Documentación y Control de Versiones
-                            </a>
-                            <a href="quiz.html?subject=despliegue&trimestre=9" class="btn btn-pastel-purple">
-                                <i class="fas fa-sync-alt me-2"></i>Repaso I
-                            </a>
-                            <a href="quiz.html?subject=despliegue&trimestre=10" class="btn btn-pastel-purple">
-                                <i class="fas fa-sync-alt me-2"></i>Repaso II
-                            </a>
+            <div class="col-md-6">
+                <div class="card card-despliegue">
+                    <div class="card-header collapsed" data-bs-toggle="collapse" data-bs-target="#colapsoDespliegue" aria-expanded="false">
+                        <div>
+                            <i class="fas fa-cloud-upload-alt subject-icon"></i>
+                            <span class="card-title mb-0">Despliegue</span>
+                        </div>
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </div>
+                    <div id="colapsoDespliegue" class="collapse">
+                        <div class="category-container">
+                            <!-- Exámenes -->
+                            <div class="category-section category-examenes">
+                                <div class="category-title">
+                                    <i class="fas fa-file-alt"></i> EXÁMENES
+                                </div>
+                                <a href="quiz.html?subject=despliegue&trimestre=1" class="btn btn-pastel-purple">
+                                    <i class="fas fa-calendar-alt me-2"></i>Examen 1º Trimestre
+                                </a>
+                                <a href="quiz.html?subject=despliegue&trimestre=2" class="btn btn-pastel-purple">
+                                    <i class="fas fa-calendar-alt me-2"></i>Examen 2º Trimestre
+                                </a>
+                            </div>
+                            
+                            <!-- Temario -->
+                            <div class="category-section category-temario">
+                                <div class="category-title">
+                                    <i class="fas fa-book"></i> TEMARIO
+                                </div>
+                                <a href="quiz.html?subject=despliegue&trimestre=3" class="btn btn-pastel-purple">
+                                    <i class="fas fa-book me-2"></i>Tema 1: Arquitecturas Web
+                                </a>
+                                <a href="quiz.html?subject=despliegue&trimestre=4" class="btn btn-pastel-purple">
+                                    <i class="fas fa-book me-2"></i>Tema 2: Servidores Web
+                                </a>
+                                <a href="quiz.html?subject=despliegue&trimestre=5" class="btn btn-pastel-purple">
+                                    <i class="fas fa-book me-2"></i>Tema 3: Servidores FTP
+                                </a>
+                                <a href="quiz.html?subject=despliegue&trimestre=6" class="btn btn-pastel-purple">
+                                    <i class="fas fa-book me-2"></i>Tema 4: Servidores de Aplicaciones
+                                </a>
+                                <a href="quiz.html?subject=despliegue&trimestre=7" class="btn btn-pastel-purple">
+                                    <i class="fas fa-book me-2"></i>Tema 5: Servicios de Red
+                                </a>
+                                <a href="quiz.html?subject=despliegue&trimestre=8" class="btn btn-pastel-purple">
+                                    <i class="fas fa-book me-2"></i>Tema 6: Documentación y Control de Versiones
+                                </a>
+                            </div>
+                            
+                            <!-- Repaso -->
+                            <div class="category-section category-repaso">
+                                <div class="category-title">
+                                    <i class="fas fa-sync-alt"></i> REPASO
+                                </div>
+                                <a href="quiz.html?subject=despliegue&trimestre=9" class="btn btn-pastel-purple">
+                                    <i class="fas fa-sync-alt me-2"></i>Repaso I
+                                </a>
+                                <a href="quiz.html?subject=despliegue&trimestre=10" class="btn btn-pastel-purple">
+                                    <i class="fas fa-sync-alt me-2"></i>Repaso II
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Inglés -->
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card card-ingles h-100">
-                    <div class="card-body">
-                        <h2 class="card-title">
-                            <i class="fas fa-language me-2"></i>Inglés
-                        </h2>
-                        <div class="d-grid gap-2">
-                            <a href="quiz.html?subject=ingles&trimestre=1" class="btn btn-pastel-gray">
-                                <i class="fas fa-calendar-alt me-2"></i>1º Trimestre
-                            </a>
-                            <a href="quiz.html?subject=ingles&trimestre=2" class="btn btn-pastel-gray">
-                                <i class="fas fa-calendar-alt me-2"></i>2º Trimestre
-                            </a>
+            <div class="col-md-6">
+                <div class="card card-ingles">
+                    <div class="card-header collapsed" data-bs-toggle="collapse" data-bs-target="#colapsoIngles" aria-expanded="false">
+                        <div>
+                            <i class="fas fa-language subject-icon"></i>
+                            <span class="card-title mb-0">Inglés</span>
+                        </div>
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </div>
+                    <div id="colapsoIngles" class="collapse">
+                        <div class="category-container">
+                            <!-- Exámenes -->
+                            <div class="category-section category-examenes">
+                                <div class="category-title">
+                                    <i class="fas fa-file-alt"></i> EXÁMENES
+                                </div>
+                                <a href="quiz.html?subject=ingles&trimestre=1" class="btn btn-pastel-gray">
+                                    <i class="fas fa-calendar-alt me-2"></i>1º Trimestre
+                                </a>
+                                <a href="quiz.html?subject=ingles&trimestre=2" class="btn btn-pastel-gray">
+                                    <i class="fas fa-calendar-alt me-2"></i>2º Trimestre
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -210,6 +291,23 @@
                 // Guardar en localStorage que ya ha visitado la página
                 localStorage.setItem('quizz_daw_visited', 'true');
             }
+            
+            // Manejar la rotación del icono de flecha en los desplegables
+            const cardHeaders = document.querySelectorAll('.card-header');
+            cardHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const target = this.getAttribute('data-bs-target');
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                    // Actualizar el aria-expanded manualmente ya que Bootstrap lo maneja automáticamente
+                    setTimeout(() => {
+                        if (isExpanded) {
+                            this.classList.add('collapsed');
+                        } else {
+                            this.classList.remove('collapsed');
+                        }
+                    }, 10);
+                });
+            });
         });
     </script>
 </body>
