@@ -1,4 +1,10 @@
-const quizData = [
+/**
+ * Datos del quiz de Programación en Entorno Cliente - 2º Trimestre
+ * Archivo convertido al nuevo formato
+ */
+
+// Definir los datos del quiz
+const quizQuestions = [
     {
         question: "¿Qué directiva se utiliza para aplicar estilos en línea dinámicamente?",
         a: "ngStyle",

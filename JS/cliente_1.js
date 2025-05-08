@@ -1,4 +1,10 @@
-const quizData = [
+/**
+ * Datos del quiz de Programación en Entorno Cliente - 1º Trimestre
+ * Archivo convertido al nuevo formato
+ */
+
+// Definir los datos del quiz
+const quizQuestions = [
     {
         question: "El software cliente más utilizado es el navegador su función principal es:",
         a: "Generar requerimientos de bases de datos y recibir/formatear los resultados del servidor.",
