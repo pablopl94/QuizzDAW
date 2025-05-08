@@ -152,6 +152,33 @@ body {
   background-color: var(--error-color);
 }
 
+/* Nuevo estilo para la respuesta correcta cuando el usuario selecciona una incorrecta */
+.option.correct-answer {
+  background-color: var(--success-light);
+  color: #2e7d32;
+  border-color: var(--success-color);
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+  position: relative;
+  animation: pulseCorrect 1s infinite;
+}
+
+.option.correct-answer::before {
+  background-color: var(--success-color);
+}
+
+/* Animación para resaltar la respuesta correcta */
+@keyframes pulseCorrect {
+  0% {
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+  }
+}
+
 /* Result styling */
 #result {
   background-color: var(--bg-light);
