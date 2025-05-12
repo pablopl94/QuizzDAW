@@ -2,8 +2,6 @@
  * Datos del quiz de Empresa e Iniciativa Emprendedora - Tema 1: Iniciativa Emprendedora
  * Archivo convertido al nuevo formato
  */
-
-// Definir los datos del quiz
 const quizQuestions = [
     {
         question: "¿Qué es un emprendedor según lo definido en el tema?",
