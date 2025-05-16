@@ -80,7 +80,7 @@ function handleOptionClick(selectedOption) {
     // Asegurar que tenemos las referencias más recientes
     updateDOMReferences();
     
-    const answer = selectedOption.id;
+    const answer = selectedOption.getAttribute("data-letter");
     const correctAnswer = quizData[currentQuestionIndex].correct;
     
     if (answer === correctAnswer) {
@@ -98,10 +98,11 @@ function handleOptionClick(selectedOption) {
         incorrect++;
         
         // Mostrar cuál era la respuesta correcta
-        const correctOption = document.getElementById(correctAnswer);
-        if (correctOption) { // Verificamos que exista para evitar errores
-            correctOption.classList.add("correct-answer");
-        }
+        options.forEach(opt => {
+            if (opt.getAttribute("data-letter") === correctAnswer) {
+                opt.classList.add("correct-answer");
+            }
+        });
         
         // Para respuestas incorrectas, tiempo establecido a 1.5 segundos
         setTimeout(() => {
@@ -144,10 +145,18 @@ function loadQuiz() {
     const currentQuizData = quizData[currentQuestionIndex];
     questionEl.innerText = currentQuizData.question;
     
-    // Mostrar opciones, detectando si tienen estructura de letras o no
+    // Crear un array con las letras de las opciones y mezclarlo
+    const optionLetters = ['a', 'b', 'c', 'd'];
+    const shuffledOptionLetters = optionLetters.sort(() => Math.random() - 0.5);
+    
+    // Mostrar opciones en orden aleatorio
     options.forEach((option, index) => {
-        const optionLetter = String.fromCharCode(97 + index); // 'a', 'b', 'c', 'd'
+        const optionLetter = shuffledOptionLetters[index]; // Letra aleatoria (a, b, c, d)
+        const displayLetter = String.fromCharCode(97 + index); // Para mostrar siempre como a, b, c, d
         const optionText = option.querySelector(".option-text");
+        
+        // Guardar la letra original como atributo para verificar respuesta correcta
+        option.setAttribute("data-letter", optionLetter);
         
         if (optionText) {
             optionText.innerText = currentQuizData[optionLetter];
