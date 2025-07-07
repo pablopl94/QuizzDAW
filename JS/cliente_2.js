@@ -39,11 +39,11 @@ const quizQuestions = [
     },
     {
         question: "¿Qué decorador se utiliza en Angular para definir un servicio como inyectable?",
-        a: "Conectar APIs externas",
-        b: "Definir servicios",
-        c: "Crear componentes",
-        d: "Permitir el manejo de formularios en Angular, incluyendo Two Way Data Binding",
-        correct: "d",
+        a: "@Component",
+        b: "@Directive",
+        c: "@Injectable",
+        d: "@NgModule",
+        correct: "c",
     },
     {
         question: "¿Para qué se usa ngModel en un formulario?",
