@@ -78,14 +78,6 @@ const quizQuestions = [
         correct: "c",
     },
     {
-        question: "¿Qué significa que una variable tenga un tipo 'implícito' en TypeScript?",
-        a: "La variable puede cambiar de tipo.",
-        b: "La variable tiene un tipo desconocido.",
-        c: "El tipo de la variable es inferido automáticamente.",
-        d: "La variable no tiene tipo.",
-        correct: "c",
-    },
-    {
         question: "¿Qué es el DOM en JavaScript?",
         a: "Un método para hacer peticiones HTTP.",
         b: "Una representación en memoria de un documento HTML.",
